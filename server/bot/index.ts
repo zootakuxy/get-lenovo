@@ -34,14 +34,6 @@ export class BotService {
     private origin = "https://webscraper.io";
     private home = `${this.origin}/test-sites/e-commerce/static/computers/laptops`;
 
-    public getLenovo(){
-        return this.netbooks( "lenovo" )
-    }
-    public netbooks( marca:string ){
-        fetch(origin, { method: "GET" }).then((response:Response) => {
-        })
-    }
-
 
     rawOf( url:string, operation:string, returns:( error:Error, raw?:string )=>void){
         fetch( url, { method: "GET" }).then((response:Response) => {
@@ -123,7 +115,7 @@ export class BotService {
         });
     }
 
-    pages ( returns:( error:Error, pages?:Page[] )=>void ){
+    pages( returns:( error:Error, pages?:Page[] )=>void ){
         this.rawOf( this.home, "pages", (error, raw) =>  {
             if( error ){
                 error["operation"] = "pages";

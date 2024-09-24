@@ -30,7 +30,7 @@ export type Failure = {
     operation:string,
 }
 
-export class BotService {
+export class ScraperBot {
     private origin = "https://webscraper.io";
     private home = `${this.origin}/test-sites/e-commerce/static/computers/laptops`;
 

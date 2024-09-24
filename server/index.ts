@@ -1,5 +1,5 @@
 #!node
-import {BotService} from "./bot";
+import {ScraperBot} from "./bot";
 
 require("source-map-support").install();
 import bodyParser from "body-parser";
@@ -15,12 +15,12 @@ app.use( bodyParser.raw({ limit: '50mb' } ) );
 app.use( bodyParser.text( { limit: '50mb' } ) );
 
 export const server = http.createServer( app );
-let botService = new BotService();
+let scraperBot = new ScraperBot();
 
 
 app.get( "/api/product/filter/:name", (req, res, next) => {
     let name = req.params.name;
-    botService.search( {
+    scraperBot.search( {
         name: name
     }, (error, response) => {
         if( error ){
@@ -50,7 +50,7 @@ app.post( "/api/product/filter", (req, res, next) => {
     let maxPrice = req.body.maxPrice;
     let minPrice = req.body.minPrice;
 
-    botService.search( {
+    scraperBot.search( {
         name: name,
         toPage,
         fromPage,
